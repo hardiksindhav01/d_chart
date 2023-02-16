@@ -263,7 +263,7 @@ typedef LineColor<Color> = Color Function(
     Map<String, dynamic> lineData, int? index, String id);
 typedef PieColor<Color> = Color Function(
     Map<String, dynamic> pieData, int? index);
-typedef PieLabel<String> = String Function(
+typedef PieLabel<Widget> = Widget Function(
     Map<String, dynamic> pieData, int? index);
 
 // Time
