@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   community_charts_flutter: ^1.0.0
   community_charts_common: ^1.0.0
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:
