@@ -1268,6 +1268,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                         widget.listData.length) *
                                     0.1)),
                         child: Container(
+                          padding: EdgeInsets.all(5),
                           child: Column(
                             children: [
                               item.labelCustom ??
