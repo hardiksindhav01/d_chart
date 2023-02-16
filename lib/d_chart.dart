@@ -1180,18 +1180,36 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
   }
 
   Widget minLabel() {
-    return Text(
-      _numberAutoDigit(0),
-      style: widget.measureLabelStyle,
-      textAlign: TextAlign.right,
+    return Column(
+      children: [
+        Text(
+          _numberAutoDigit(0),
+          style: widget.measureLabelStyle,
+          textAlign: TextAlign.right,
+        ),
+        Text(
+          _numberAutoDigit(0),
+          style: widget.measureLabelStyle,
+          textAlign: TextAlign.right,
+        ),
+      ],
     );
   }
 
   Widget maxLabel() {
-    return Text(
-      _numberAutoDigit(max),
-      style: widget.measureLabelStyle,
-      textAlign: TextAlign.right,
+    return Column(
+      children: [
+        Text(
+          _numberAutoDigit(max),
+          style: widget.measureLabelStyle,
+          textAlign: TextAlign.right,
+        ),
+        Text(
+          _numberAutoDigit(max),
+          style: widget.measureLabelStyle,
+          textAlign: TextAlign.right,
+        ),
+      ],
     );
   }
 
@@ -1463,13 +1481,23 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                               (widget.spaceDomainLinetoChart ??
                                                   0),
                                     ),
-                                    child: item.labelCustom ??
-                                        Text(
-                                          item.label,
-                                          style: widget.domainLabelStyle,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
+                                    child: Column(
+                                      children: [
+                                        item.labelCustom ??
+                                            Text(
+                                              item.label,
+                                              style: widget.domainLabelStyle,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Text(
+                                              item.label,
+                                              style: widget.domainLabelStyle,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                             ],
