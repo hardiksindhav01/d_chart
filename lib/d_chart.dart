@@ -1267,28 +1267,30 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                 ((constrainsDomainLabelHorz.maxHeight /
                                         widget.listData.length) *
                                     0.1)),
-                        child: Column(
-                          children: [
-                            item.labelCustom ??
-                                Text(
-                                  item.label,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      color: Color(0xff264653),
-                                      fontWeight: FontWeight.w500),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                            Text(
-                                  item.label,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  color: Color(0xff264653),
-                                  fontWeight: FontWeight.w300),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                          ],
+                        child: Container(
+                          child: Column(
+                            children: [
+                              item.labelCustom ??
+                                  Text(
+                                    item.label,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        color: Color(0xff264653),
+                                        fontWeight: FontWeight.w500),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                              Text(
+                                    item.label,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    color: Color(0xff264653),
+                                    fontWeight: FontWeight.w300),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                            ],
+                          ),
                         ),
                       );
                     }),
