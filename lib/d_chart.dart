@@ -7,7 +7,6 @@ import 'package:community_charts_common/community_charts_common.dart'
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as _charts;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 String _getSymbolType(SymbolType? type) {
   switch (type) {
@@ -266,8 +265,7 @@ typedef PieColor<Color> = Color Function(
     Map<String, dynamic> pieData, int? index);
 typedef PieLabel<String> = String Function(
     Map<String, dynamic> pieData, int? index);
-typedef PieLabel2<String> = String Function(
-    Map<String, dynamic> pieData, int? index);
+
 
 // Time
 typedef TimePrimaryColor = Color Function(
@@ -792,8 +790,6 @@ class DChartPie extends StatelessWidget {
 
   /// [pieLabel] return PieLabel data. can be custom based on pie data
   final PieLabel? pieLabel;
-  /// [pieLabel2] return PieLabel data. can be custom based on pie data
-  final PieLabel2? pieLabel2;
 
   /// [labelPosition] return PieLabelPosition
   /// Default: PieLabelPosition.auto
@@ -854,7 +850,6 @@ class DChartPie extends StatelessWidget {
     this.labelPadding = 5,
     this.labelPosition = PieLabelPosition.auto,
     this.pieLabel,
-    this.pieLabel2,
     this.showLabelLine = true,
     this.strokeWidth = 2,
   });
@@ -871,10 +866,7 @@ class DChartPie extends StatelessWidget {
           labelAccessorFn: (datum, index) {
             return pieLabel == null
                 ? datum['measure'].toString()
-                : pieLabel!(datum, index) ||
-                pieLabel2 == null
-                ? datum['measure'].toString()
-                : pieLabel2!(datum, index);
+                : pieLabel!(datum, index);
           },
           colorFn: (datum, index) {
             return _charts.ColorUtil.fromDartColor(fillColor(datum, index));
@@ -915,8 +907,6 @@ class DChartGauge extends StatelessWidget {
 
   /// [pieLabel] return PieLabel data. can be custom based on pie data
   final PieLabel? pieLabel;
-  /// [pieLabel2] return PieLabel data. can be custom based on pie data
-  final PieLabel2? pieLabel2;
 
   /// [labelPosition] return PieLabelPosition
   /// Default: PieLabelPosition.auto
@@ -977,7 +967,6 @@ class DChartGauge extends StatelessWidget {
     this.labelPadding = 5,
     this.labelPosition = PieLabelPosition.auto,
     this.pieLabel,
-    this.pieLabel2,
     this.showLabelLine = true,
     this.strokeWidth = 2,
   });
@@ -994,10 +983,7 @@ class DChartGauge extends StatelessWidget {
           labelAccessorFn: (datum, index) {
             return pieLabel == null
                 ? datum['measure'].toString()
-                : pieLabel!(datum, index) ||
-                pieLabel2 == null
-                ? datum['measure'].toString()
-                : pieLabel2!(datum, index);
+                : pieLabel!(datum, index);
           },
           colorFn: (datum, index) {
             return _charts.ColorUtil.fromDartColor(fillColor(datum, index));
@@ -1267,31 +1253,22 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                 ((constrainsDomainLabelHorz.maxHeight /
                                         widget.listData.length) *
                                     0.1)),
-                        child: Container(
-                          padding: EdgeInsets.all(5),
-                          child: Column(
-                            children: [
-                              item.labelCustom ??
-                                  Text(
-                                    item.label,
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 14,
-                                        color: Color(0xff264653),
-                                        fontWeight: FontWeight.w500),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                              Text(
-                                    item.label,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    color: Color(0xff264653),
-                                    fontWeight: FontWeight.w300),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                            ],
-                          ),
+                        child: Column(
+                          children: [
+                            item.labelCustom ??
+                                Text(
+                                  item.label,
+                                  style: widget.domainLabelStyle,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                            Text(
+                                  item.label,
+                                  style: widget.domainLabelStyle,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                          ],
                         ),
                       );
                     }),
