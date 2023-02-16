@@ -864,7 +864,7 @@ class DChartPie extends StatelessWidget {
           data: data,
           labelAccessorFn: (datum, index) {
             return pieLabel == null
-                ? datum['measure'].toString()
+                ? Widget
                 : pieLabel!(datum, index);
           },
           colorFn: (datum, index) {
@@ -981,7 +981,7 @@ class DChartGauge extends StatelessWidget {
           data: data,
           labelAccessorFn: (datum, index) {
             return pieLabel == null
-                ? datum['measure'].toString()
+                ? Widget
                 : pieLabel!(datum, index);
           },
           colorFn: (datum, index) {
