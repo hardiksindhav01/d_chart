@@ -3,9 +3,9 @@ library d_chart;
 import 'dart:math' as _math;
 
 import 'package:community_charts_common/community_charts_common.dart'
-    as _common;
+as _common;
 import 'package:community_charts_flutter/community_charts_flutter.dart'
-    as _charts;
+as _charts;
 import 'package:flutter/material.dart';
 
 String _getSymbolType(SymbolType? type) {
@@ -110,8 +110,8 @@ class _IconRenderer extends _charts.CustomSymbolRenderer {
         color: color == null
             ? null
             : color.opacity < 1
-                ? color.withAlpha(255)
-                : color,
+            ? color.withAlpha(255)
+            : color,
         size: this.size ?? 12,
       ),
     );
@@ -265,7 +265,6 @@ typedef PieColor<Color> = Color Function(
     Map<String, dynamic> pieData, int? index);
 typedef PieLabel<String> = String Function(
     Map<String, dynamic> pieData, int? index);
-
 
 // Time
 typedef TimePrimaryColor = Color Function(
@@ -617,14 +616,14 @@ class DChartBar extends StatelessWidget {
       }),
       barRendererDecorator: showBarValue
           ? _charts.BarLabelDecorator(
-              labelAnchor: _getBarValueAnchor(barValueAnchor),
-              outsideLabelStyleSpec:
-                  _textStyleSpec(barValueFontSize, barValueColor),
-              insideLabelStyleSpec:
-                  _textStyleSpec(barValueFontSize, barValueColor),
-              labelPadding: 4,
-              labelPosition: _getBarValuePosition(barValuePosition),
-            )
+        labelAnchor: _getBarValueAnchor(barValueAnchor),
+        outsideLabelStyleSpec:
+        _textStyleSpec(barValueFontSize, barValueColor),
+        insideLabelStyleSpec:
+        _textStyleSpec(barValueFontSize, barValueColor),
+        labelPadding: 4,
+        labelPosition: _getBarValuePosition(barValuePosition),
+      )
           : null,
       domainAxis: _charts.OrdinalAxisSpec(
         renderSpec: _charts.SmallTickRendererSpec(
@@ -681,7 +680,7 @@ class DChartBar extends StatelessWidget {
           yAxisTitle ?? '',
           behaviorPosition: _getTitlePositionY(measureAxisTitlePosition),
           titleStyleSpec:
-              _textStyleSpec(measureAxisTitleFontSize, measureAxisTitleColor),
+          _textStyleSpec(measureAxisTitleFontSize, measureAxisTitleColor),
           outerPadding: measureAxisTitleInPadding,
           innerPadding: measureAxisTitleOutPadding,
           layoutPreferredSize: yAxisTitle == null ? 0 : null,
@@ -690,7 +689,7 @@ class DChartBar extends StatelessWidget {
           xAxisTitle ?? '',
           behaviorPosition: _getTitlePositionX(domainAxisTitlePosition),
           titleStyleSpec:
-              _textStyleSpec(domainAxisTitleFontSize, domainAxisTitleColor),
+          _textStyleSpec(domainAxisTitleFontSize, domainAxisTitleColor),
           outerPadding: domainAxisTitleOutPadding,
           innerPadding: domainAxisTitleInPadding,
           layoutPreferredSize: xAxisTitle == null ? 0 : null,
@@ -1164,7 +1163,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
       });
       Future.delayed(
         widget.loadingDuration ?? const Duration(milliseconds: 1200),
-        () {
+            () {
           setState(() {
             loading = false;
           });
@@ -1180,54 +1179,34 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
   }
 
   Widget minLabel() {
-    return Column(
-      children: [
-        Text(
-          _numberAutoDigit(0),
-          style: widget.measureLabelStyle,
-          textAlign: TextAlign.right,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          _numberAutoDigit(0),
-          style: widget.measureLabelStyle,
-          textAlign: TextAlign.right,
-        ),
-      ],
+    return Text(
+      _numberAutoDigit(0),
+      style: widget.measureLabelStyle,
+      textAlign: TextAlign.right,
     );
   }
 
   Widget maxLabel() {
-    return Column(
-      children: [
-        Text(
-          _numberAutoDigit(max),
-          style: widget.measureLabelStyle,
-          textAlign: TextAlign.right,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          _numberAutoDigit(max),
-          style: widget.measureLabelStyle,
-          textAlign: TextAlign.right,
-        ),
-      ],
+    return Text(
+      _numberAutoDigit(max),
+      style: widget.measureLabelStyle,
+      textAlign: TextAlign.right,
     );
   }
 
   BorderSide domainLine() {
     return (widget.showDomainLine ?? false)
         ? widget.domainLineStyle != null
-            ? widget.domainLineStyle!
-            : const BorderSide()
+        ? widget.domainLineStyle!
+        : const BorderSide()
         : BorderSide.none;
   }
 
   BorderSide measureLine() {
     return (widget.showMeasureLine ?? false)
         ? widget.measureLineStyle != null
-            ? widget.measureLineStyle!
-            : const BorderSide()
+        ? widget.measureLineStyle!
+        : const BorderSide()
         : BorderSide.none;
   }
 
@@ -1259,42 +1238,31 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                 ),
                 child: LayoutBuilder(
                     builder: (context, constrainsDomainLabelHorz) {
-                  return Column(
-                    crossAxisAlignment: widget.domainLabelAlignVertical ??
-                        CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(widget.listData.length, (index) {
-                      DChartBarDataCustom item = widget.listData[index];
-                      return Container(
-                        alignment: Alignment.center,
-                        height: (constrainsDomainLabelHorz.maxHeight /
+                      return Column(
+                        crossAxisAlignment: widget.domainLabelAlignVertical ??
+                            CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: List.generate(widget.listData.length, (index) {
+                          DChartBarDataCustom item = widget.listData[index];
+                          return Container(
+                            alignment: Alignment.center,
+                            height: (constrainsDomainLabelHorz.maxHeight /
                                 widget.listData.length) -
-                            (widget.spaceBetweenItem ??
-                                ((constrainsDomainLabelHorz.maxHeight /
+                                (widget.spaceBetweenItem ??
+                                    ((constrainsDomainLabelHorz.maxHeight /
                                         widget.listData.length) *
-                                    0.1)),
-                        child: Column(
-                          children: [
-                            item.labelCustom ??
+                                        0.1)),
+                            child: item.labelCustom ??
                                 Text(
                                   item.label,
                                   style: widget.domainLabelStyle,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                            SizedBox(height: 5,),
-                            Text(
-                                  item.label,
-                                  style: widget.domainLabelStyle,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                          ],
-                        ),
+                          );
+                        }),
                       );
                     }),
-                  );
-                }),
               ),
             SizedBox(width: widget.spaceDomainLabeltoChart ?? 5),
             Expanded(
@@ -1311,7 +1279,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                     child: Padding(
                       padding: paddingChart(),
                       child:
-                          LayoutBuilder(builder: (context, constraintsChart) {
+                      LayoutBuilder(builder: (context, constraintsChart) {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1323,10 +1291,10 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                 width: (item.value / max) *
                                     constraintsChart.maxWidth,
                                 height: (constraintsChart.maxHeight /
-                                        widget.listData.length) -
+                                    widget.listData.length) -
                                     (widget.spaceBetweenItem ??
                                         ((constraintsChart.maxHeight /
-                                                widget.listData.length) *
+                                            widget.listData.length) *
                                             0.1)),
                                 child: _DChartBarItemValueView(
                                   barDataCustom: item,
@@ -1351,14 +1319,14 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                               (widget.spaceDomainLinetoChart ?? 0) +
                               ((widget.showMeasureLine ?? false)
                                   ? (widget.measureLineStyle == null
-                                      ? 0
-                                      : widget.measureLineStyle!.width)
+                                  ? 0
+                                  : widget.measureLineStyle!.width)
                                   : 0),
                           12 +
                               ((widget.showMeasureLine ?? false)
                                   ? (widget.measureLineStyle == null
-                                      ? 0
-                                      : widget.measureLineStyle!.width)
+                                  ? 0
+                                  : widget.measureLineStyle!.width)
                                   : 0) +
                               (widget.spaceMeasureLabeltoChart ?? 5),
                         ),
@@ -1374,8 +1342,8 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                             12 +
                                 ((widget.showMeasureLine ?? false)
                                     ? (widget.measureLineStyle == null
-                                        ? 0
-                                        : widget.measureLineStyle!.width)
+                                    ? 0
+                                    : widget.measureLineStyle!.width)
                                     : 0) +
                                 (widget.spaceMeasureLabeltoChart ?? 5),
                           ),
@@ -1406,8 +1374,8 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                     4 -
                         ((widget.showDomainLine ?? false)
                             ? (widget.domainLineStyle == null
-                                ? 0
-                                : widget.domainLineStyle!.width)
+                            ? 0
+                            : widget.domainLineStyle!.width)
                             : 0) -
                         (widget.spaceDomainLinetoChart ?? 0),
                   ),
@@ -1438,10 +1406,10 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                             (item.value / max) * constraintsChart.maxHeight;
                         return SizedBox(
                           width: (constraintsChart.maxWidth /
-                                  widget.listData.length) -
+                              widget.listData.length) -
                               (widget.spaceBetweenItem ??
                                   ((constraintsChart.maxWidth /
-                                          widget.listData.length) *
+                                      widget.listData.length) *
                                       0.1)),
                           child: Stack(
                             children: [
@@ -1455,9 +1423,9 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                     valueAlign: widget.valueAlign,
                                     radiusBar: widget.radiusBar,
                                     verticalOffsetTooltip: (((item.value /
-                                                    max) *
-                                                constraintsChart.maxHeight) *
-                                            0.5) +
+                                        max) *
+                                        constraintsChart.maxHeight) *
+                                        0.5) +
                                         4,
                                   ),
                                 ),
@@ -1471,37 +1439,26 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                       height == 0
                                           ? 20
                                           : 0 +
-                                              15 +
-                                              (widget.spaceDomainLabeltoChart ??
-                                                  5) +
-                                              ((widget.showDomainLine ?? false)
-                                                  ? (widget.domainLineStyle ==
-                                                          null
-                                                      ? 0
-                                                      : widget.domainLineStyle!
-                                                          .width)
-                                                  : 0) +
-                                              (widget.spaceDomainLinetoChart ??
-                                                  0),
+                                          15 +
+                                          (widget.spaceDomainLabeltoChart ??
+                                              5) +
+                                          ((widget.showDomainLine ?? false)
+                                              ? (widget.domainLineStyle ==
+                                              null
+                                              ? 0
+                                              : widget.domainLineStyle!
+                                              .width)
+                                              : 0) +
+                                          (widget.spaceDomainLinetoChart ??
+                                              0),
                                     ),
-                                    child: Column(
-                                      children: [
-                                        item.labelCustom ??
-                                            Text(
-                                              item.label,
-                                              style: widget.domainLabelStyle,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                        SizedBox(height: 5,),
-                                            Text(
-                                              item.label,
-                                              style: widget.domainLabelStyle,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                      ],
-                                    ),
+                                    child: item.labelCustom ??
+                                        Text(
+                                          item.label,
+                                          style: widget.domainLabelStyle,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                   ),
                                 ),
                             ],
@@ -1611,7 +1568,7 @@ class _DChartBarItemValueView extends StatelessWidget {
       verticalOffset: verticalOffsetTooltip,
       child: GestureDetector(
         onTap:
-            barDataCustom.onTap == null ? null : () => barDataCustom.onTap!(),
+        barDataCustom.onTap == null ? null : () => barDataCustom.onTap!(),
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -1635,18 +1592,9 @@ class _DChartBarItemValueView extends StatelessWidget {
                     alignment: valueAlign ?? Alignment.topCenter,
                     child: Padding(
                       padding: valuePadding ?? const EdgeInsets.all(4),
-                      child: Column(
-                        children: [
-                          Text(
-                            _numberAutoDigit(barDataCustom.value),
-                            style: barDataCustom.valueStyle,
-                          ),
-                          SizedBox(height: 5,),
-                          Text(
-                            _numberAutoDigit(barDataCustom.value),
-                            style: barDataCustom.valueStyle,
-                          ),
-                        ],
+                      child: Text(
+                        _numberAutoDigit(barDataCustom.value),
+                        style: barDataCustom.valueStyle,
                       ),
                     ),
                   ),
@@ -1691,11 +1639,18 @@ class DChartTime extends StatelessWidget {
   /// animate chart when it build?
   final bool? animate;
 
-  /// color for line
+  /// DRenderBar: color for border\
+  /// DRenderLine: color for line chart\
+  /// DRenderTargetLine: color for line chart\
+  /// DRenderPoint: -
   /// Default: Random, each group has same color
   final TimePrimaryColor? primaryColor;
 
-  /// color for fill item chart
+  /// color for fill item chart\
+  /// DRenderBar: color for content bar item fill\
+  /// DRenderLine: -\
+  /// DRenderTargetLine: -\
+  /// DRenderPoint: color for point\
   final TimeFillColor? fillColor;
 
   /// changed listener for selected point
@@ -1860,10 +1815,16 @@ class DChartTime extends StatelessWidget {
   final TimeLabelValue? customLabelValue;
 
   /// fill area\
+  /// set true for showArea in DRenderLine\
+  /// DRenderBar: -\
+  /// DRenderLine: color for area\
+  /// DRenderTargetLine: -\
+  /// DRenderPoint: -\
   /// default: group color with opacity 0.1
   final TimeAreaColor? areaColor;
 
-  /// symbol legend color
+  /// symbol legend color\
+  /// available on all render Type\
   /// default: groupColor
   final TimeSeriesColor? seriesColor;
 
@@ -1995,7 +1956,7 @@ class DChartTime extends StatelessWidget {
             // labelJustification: _charts.TickLabelJustification.inside,
           ),
           tickFormatterSpec: _charts.BasicNumericTickFormatterSpec(
-            (measure) {
+                (measure) {
               if (measureLabel == null) return '$measure';
               return measureLabel!(measure);
             },
@@ -2005,14 +1966,14 @@ class DChartTime extends StatelessWidget {
           showAxisLine: showDomainLine,
           viewport: (startDate != null && endDate != null)
               ? _charts.DateTimeExtents(
-                  start: startDate!,
-                  end: endDate!,
-                )
+            start: startDate!,
+            end: endDate!,
+          )
               : null,
           renderSpec: _charts.SmallTickRendererSpec(
             lineStyle: _charts.LineStyleSpec(
               color:
-                  domainLineColor == null ? null : _getColor(domainLineColor!),
+              domainLineColor == null ? null : _getColor(domainLineColor!),
               dashPattern: domainLineDashPattern,
               thickness: domainLineThickness,
             ),
@@ -2022,8 +1983,8 @@ class DChartTime extends StatelessWidget {
           tickFormatterSpec: domainLabel == null
               ? null
               : _charts.BasicDateTimeTickFormatterSpec(
-                  (datetime) => domainLabel!(datetime),
-                ),
+                (datetime) => domainLabel!(datetime),
+          ),
         ),
         behaviors: [
           if (title != null)
@@ -2053,9 +2014,9 @@ class DChartTime extends StatelessWidget {
             ),
           _charts.LinePointHighlighter(
             showHorizontalFollowLine:
-                _charts.LinePointHighlighterFollowLineType.nearest,
+            _charts.LinePointHighlighterFollowLineType.nearest,
             showVerticalFollowLine:
-                _charts.LinePointHighlighterFollowLineType.nearest,
+            _charts.LinePointHighlighterFollowLineType.nearest,
           ),
           _charts.SelectNearest(
             eventTrigger: _charts.SelectionTrigger.tapAndDrag,
@@ -2563,7 +2524,7 @@ class DChartScatter extends StatelessWidget {
                   : fillColor!(colorPerGroup, group, datum),
             ),
             strokeWidthPxFn: (datum, index) =>
-                borderWidth == null ? null : borderWidth!(group, datum, index),
+            borderWidth == null ? null : borderWidth!(group, datum, index),
             colorFn: (datum, index) => _getColor(
               borderColor == null
                   ? colorPerGroup.withOpacity(0.3)
@@ -2574,19 +2535,19 @@ class DChartScatter extends StatelessWidget {
               return customLabelValue!(group, datum, index);
             },
             domainLowerBoundFn: (datum, index) =>
-                datum.startPlot == null ? null : datum.startPlot!.domain,
+            datum.startPlot == null ? null : datum.startPlot!.domain,
             domainUpperBoundFn: (datum, index) =>
-                datum.startPlot == null ? null : datum.domain,
+            datum.startPlot == null ? null : datum.domain,
             measureLowerBoundFn: (datum, index) =>
-                datum.startPlot == null ? null : datum.startPlot!.measure,
+            datum.startPlot == null ? null : datum.startPlot!.measure,
             measureUpperBoundFn: (datum, index) =>
-                datum.startPlot == null ? null : datum.measure,
+            datum.startPlot == null ? null : datum.measure,
             displayName: legendTitle == null ? null : legendTitle!(group),
           )
             ..setAttribute(
               _charts.pointSymbolRendererFnKey,
-              (int? i) =>
-                  i == null ? 'circle' : _getSymbolType(group.data[i].type),
+                  (int? i) =>
+              i == null ? 'circle' : _getSymbolType(group.data[i].type),
             )
             ..setAttribute(_charts.pointSymbolRendererIdKey, 'circle');
         }),
@@ -2625,7 +2586,7 @@ class DChartScatter extends StatelessWidget {
             tickLengthPx: measureTickLength ?? 3,
           ),
           tickFormatterSpec: _charts.BasicNumericTickFormatterSpec(
-            (measure) {
+                (measure) {
               if (measureLabel == null) return '$measure';
               return measureLabel!(measure);
             },
@@ -2639,7 +2600,7 @@ class DChartScatter extends StatelessWidget {
           renderSpec: _charts.SmallTickRendererSpec(
             lineStyle: _charts.LineStyleSpec(
               color:
-                  domainLineColor == null ? null : _getColor(domainLineColor!),
+              domainLineColor == null ? null : _getColor(domainLineColor!),
               dashPattern: domainLineDashPattern,
               thickness: domainLineThickness,
             ),
@@ -2649,8 +2610,8 @@ class DChartScatter extends StatelessWidget {
           tickFormatterSpec: domainLabel == null
               ? null
               : _charts.BasicNumericTickFormatterSpec(
-                  (datetime) => domainLabel!(datetime),
-                ),
+                (datetime) => domainLabel!(datetime),
+          ),
         ),
         behaviors: [
           if (title != null)
@@ -2680,9 +2641,9 @@ class DChartScatter extends StatelessWidget {
             ),
           _charts.LinePointHighlighter(
             showHorizontalFollowLine:
-                _charts.LinePointHighlighterFollowLineType.nearest,
+            _charts.LinePointHighlighterFollowLineType.nearest,
             showVerticalFollowLine:
-                _charts.LinePointHighlighterFollowLineType.nearest,
+            _charts.LinePointHighlighterFollowLineType.nearest,
           ),
           _charts.SelectNearest(
             eventTrigger: _charts.SelectionTrigger.tapAndDrag,
@@ -2765,8 +2726,8 @@ class DChartSingleBar extends StatelessWidget {
           double newValue = value < 0
               ? 0
               : value > newMax
-                  ? newMax
-                  : value;
+              ? newMax
+              : value;
           double width = (newValue / newMax) * constraints.maxWidth;
           return Stack(
             children: [
@@ -2775,7 +2736,7 @@ class DChartSingleBar extends StatelessWidget {
                 borderRadius: radius,
                 child: InkWell(
                   onTap:
-                      onBackground == null ? null : () => onBackground!(newMax),
+                  onBackground == null ? null : () => onBackground!(newMax),
                   borderRadius: radius,
                   child: SizedBox(
                     width: constraints.maxWidth,
@@ -2788,7 +2749,7 @@ class DChartSingleBar extends StatelessWidget {
                 borderRadius: radius,
                 child: InkWell(
                   onTap:
-                      onForground == null ? null : () => onForground!(newValue),
+                  onForground == null ? null : () => onForground!(newValue),
                   borderRadius: radius,
                   child: SizedBox(
                     width: width,
