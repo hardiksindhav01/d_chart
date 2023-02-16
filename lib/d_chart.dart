@@ -1187,6 +1187,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
           style: widget.measureLabelStyle,
           textAlign: TextAlign.right,
         ),
+        SizedBox(height: 5,),
         Text(
           _numberAutoDigit(0),
           style: widget.measureLabelStyle,
@@ -1204,6 +1205,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
           style: widget.measureLabelStyle,
           textAlign: TextAlign.right,
         ),
+        SizedBox(height: 5,),
         Text(
           _numberAutoDigit(max),
           style: widget.measureLabelStyle,
@@ -1280,6 +1282,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                            SizedBox(height: 5,),
                             Text(
                                   item.label,
                                   style: widget.domainLabelStyle,
@@ -1490,6 +1493,7 @@ class _DChartBarCustomState extends State<DChartBarCustom> {
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis,
                                             ),
+                                        SizedBox(height: 5,),
                                             Text(
                                               item.label,
                                               style: widget.domainLabelStyle,
@@ -1631,9 +1635,18 @@ class _DChartBarItemValueView extends StatelessWidget {
                     alignment: valueAlign ?? Alignment.topCenter,
                     child: Padding(
                       padding: valuePadding ?? const EdgeInsets.all(4),
-                      child: Text(
-                        _numberAutoDigit(barDataCustom.value),
-                        style: barDataCustom.valueStyle,
+                      child: Column(
+                        children: [
+                          Text(
+                            _numberAutoDigit(barDataCustom.value),
+                            style: barDataCustom.valueStyle,
+                          ),
+                          SizedBox(height: 5,),
+                          Text(
+                            _numberAutoDigit(barDataCustom.value),
+                            style: barDataCustom.valueStyle,
+                          ),
+                        ],
                       ),
                     ),
                   ),
